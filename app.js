@@ -1,10 +1,7 @@
-const express = require("express")
-const app = express()
-const bookRouter = express.Router()
+const express = require("express");
+const router = require("./routes");
+const app = express();
+app.use(express.json());
+app.use("/api", router);
 
-
-
-app.get( "/", (req,res,next)=> {
-    res.send("keks")
-})
-module.exports = app
+module.exports = app;
