@@ -1,0 +1,13 @@
+POST http://localhost:5001/api/books
+Content-Type: application/json
+
+{
+
+      "pages": 150,      
+      "name": "Eneida",
+            "author": "Ivan Kotliarevskiy",
+      "year": 1842
+
+
+
+}

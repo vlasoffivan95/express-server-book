@@ -1,8 +1,9 @@
 const Books = require("../models/Books");
 
 module.exports.createNewBook = async (req, res, next) => {
-  const newBookList = await Books.createNewBook(req.body);
+  const newBookList = await Books.create(req.body);
   res.send(newBookList);
+
 };
 
 module.exports.getBook = async(req, res, next) => {

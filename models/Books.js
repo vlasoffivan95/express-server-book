@@ -35,7 +35,7 @@ class Books {
   static async create(bookData) {
     const newBookList = {
       ...bookData,
-      id: uuidv4(),
+      id: Date.now(),
     };
     this.booksDB.push(newBookList);
     return newBookList;
