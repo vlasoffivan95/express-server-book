@@ -30,3 +30,16 @@ module.exports.deleteBook = async (req, res, next) => {
   const deleteBook = await Books.delete(bookId);
   res.send(deleteBook);
 };
+
+module.exports.updateDataBook = async (req, res, next) => {
+  const {
+    params: { bookId }, body
+  } = req;
+
+  try {
+    const updateBook = await Books.update(bookId, body);
+    res.send(updateBook);
+  } catch (error) {
+    res.send("Dont find book!!!!");
+  }
+};

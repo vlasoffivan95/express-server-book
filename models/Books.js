@@ -56,6 +56,16 @@ class Books {
       return foundBook;
     }
   }
+
+  static async update(bookId, newData) {
+    const foundBook = await this.findOneBook(bookId)
+    if(foundBook) {
+      Object.assign(foundBook, newData)
+      return foundBook
+    }
+    throw new Error("user not found!")
+
+  }
 }
 
 module.exports = Books;

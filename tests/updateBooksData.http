@@ -1,0 +1,9 @@
+PUT http://localhost:5001/api/books/1
+Content-Type: application/json
+
+{
+      "pages": 150,      
+      "name": "NewData",
+      "author": "NewData",
+      "year": 2023
+}

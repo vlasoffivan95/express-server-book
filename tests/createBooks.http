@@ -3,10 +3,10 @@ Content-Type: application/json
 
 {
 
-      "pages": 150,      
-      "name": "Eneida",
-            "author": "Ivan Kotliarevskiy",
-      "year": 1842
+      "pages": 2,      
+      "name": 123,
+            "author": "3333",
+      "year": 2023
 
 
 
