@@ -41,10 +41,14 @@ class Books {
     return newBookList;
   }
 
-  static async getAll () {
+  static async getAll() {
     return this.booksDB;
   }
-}
 
+  static async findOneBook(bookId) {
+    const foundBook = this.booksDB.find((b) => b.id === Number(bookId));
+    return foundBook;
+  }
+}
 
 module.exports = Books;
