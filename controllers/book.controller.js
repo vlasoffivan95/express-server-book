@@ -1,4 +1,6 @@
 const Books = require("../models/Books");
+const { NotFoundError } = require("../error/NotFoundError");
+const createHttpError = require("http-errors")
 
 module.exports.createNewBook = async (req, res, next) => {
   const newBookList = await Books.create(req.body);
@@ -18,7 +20,7 @@ module.exports.getBook = async (req, res, next) => {
   if (foundBook) {
     res.send(foundBook);
   } else {
-    res.send("undefined");
+    next(createHttpError(404, "User Not Found"))
   }
 };
 
@@ -26,14 +28,18 @@ module.exports.deleteBook = async (req, res, next) => {
   const {
     params: { bookId },
   } = req;
-
-  const deleteBook = await Books.delete(bookId);
-  res.send(deleteBook);
+  try {
+    const deleteBook = await Books.delete(bookId);
+    res.send(deleteBook);
+  } catch(error) {
+    next(new NotFoundError(error.message));
+  }
 };
 
 module.exports.updateDataBook = async (req, res, next) => {
   const {
-    params: { bookId }, body
+    params: { bookId },
+    body,
   } = req;
 
   try {
