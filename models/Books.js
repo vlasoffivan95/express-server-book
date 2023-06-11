@@ -49,6 +49,13 @@ class Books {
     const foundBook = this.booksDB.find((b) => b.id === Number(bookId));
     return foundBook;
   }
+  static async delete(bookId) {
+    const foundBook = await this.findOneBook(bookId);
+    if (foundBook) {
+      this.booksDB = this.booksDB.filter((b) => b.id !== Number(bookId));
+      return foundBook;
+    }
+  }
 }
 
 module.exports = Books;

@@ -18,6 +18,15 @@ module.exports.getBook = async (req, res, next) => {
   if (foundBook) {
     res.send(foundBook);
   } else {
-    res.send("undefined")
+    res.send("undefined");
   }
+};
+
+module.exports.deleteBook = async (req, res, next) => {
+  const {
+    params: { bookId },
+  } = req;
+
+  const deleteBook = await Books.delete(bookId);
+  res.send(deleteBook);
 };
